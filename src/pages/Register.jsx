@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-
 import { useRegister } from "../hooks/useRegister";
 
 function Register() {
   const { user, isPending, register } = useRegister();
+
   const handleRegister = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -18,54 +18,58 @@ function Register() {
     <div
       className="grid h-screen w-full place-items-center bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("./signup-bg.jpg")`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/1920/1080')`,
       }}
     >
-      <div>
-        <img src="./logo.svg" className="mx-auto w-16" alt="" />
-        <h2 className="text-center text-2xl font-semibold text-white md:text-4xl">
-          Signup
+      <div className="w-full max-w-sm p-6 bg-gray-900 bg-opacity-75 rounded-lg shadow-lg">
+        <img src="./logo.svg" className="mx-auto w-16" alt="Logo" />
+        <h2 className="text-center text-2xl font-semibold text-white md:text-4xl mb-4">
+          Register
         </h2>
-        <form onSubmit={handleRegister} className="flex flex-col gap-2">
-          <label>
+
+        <form onSubmit={handleRegister} className="flex flex-col gap-4">
+          <label className="text-white">
             Display Name
             <input
               name="displayName"
               type="text"
               placeholder="Type here"
-              className="input"
+              className="input w-full p-2 rounded-md mt-2 text-black"
               required
             />
           </label>
-          <label>
+
+          <label className="text-white">
             Email
             <input
               name="email"
               type="email"
               placeholder="Type here"
-              className="input"
+              className="input w-full p-2 rounded-md mt-2 text-black"
               required
             />
           </label>
-          <label>
+
+          <label className="text-white">
             Password
             <input
               name="password"
               type="password"
               placeholder="Type here"
-              className="input"
+              className="input w-full p-2 rounded-md mt-2 text-black"
               required
             />
           </label>
+
           <div className="mt-5 flex flex-col gap-2 md:flex-row">
             {isPending && (
-              <button className="btn btn-primary grow md:btn-md btn-sm">
+              <button className="btn btn-primary grow md:btn-md btn-sm text-black">
                 Loading...
               </button>
             )}
             {!isPending && (
-              <button className="btn btn-primary grow md:btn-md btn-sm">
-                SingUp
+              <button className="btn btn-primary grow md:btn-md btn-sm text-black">
+                SignUp
               </button>
             )}
             <button className="btn btn-secondary btn-sm grow md:btn-md disabled:bg-slate-400">
@@ -74,12 +78,14 @@ function Register() {
           </div>
         </form>
 
-        <h2 className="mt-4">
-          If you have an account, please
-          <Link to="/login" className="bg-white underline text-black ml-1">
-            Login
-          </Link>
-        </h2>
+        <div className="mt-6 text-center">
+          <h2 className="text-white">
+            Already have an account?{" "}
+            <Link to="/login" className="text-blue-400 underline font-semibold">
+              Login
+            </Link>
+          </h2>
+        </div>
       </div>
     </div>
   );
