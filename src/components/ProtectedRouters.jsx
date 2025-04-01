@@ -1,10 +1,10 @@
 import { Navigate } from "react-router-dom";
 
-function ProtectedRoutes({ user, children }) {
+function ProtectedRoutes({ children, user }) {
   if (user) {
     return children;
-  } else {
-    return <Navigate to="/login" />;
+  } else if (!user) {
+    return <Navigate to="login" />;
   }
 }
 
